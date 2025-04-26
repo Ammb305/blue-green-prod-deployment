@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankapp-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bankapp
+      version: green
+  template:
+    metadata:
+      labels:
+        app: bankapp
+        version: green
+    spec:
+      containers:
+      - name: bankapp
+        image: ammb/bankapp:green # Adjust the image tag for the green version
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value-from: secrets
+        - name: SPRING_DATASOURCE_USERNAME
+          value-from: secrets
+        - name: SPRING_DATASOURCE_PASSWORD
+          value-from: secrets
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "500m"
+          limits:
+            memory: "1000Mi"
+            cpu: "1000m"

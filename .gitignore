@@ -25,3 +25,21 @@ terraform/*~
 
 # Ignore sensitive files
 terraform/.env
+
+# Ignore Maven target directory
+target/
+
+# Ignore all files in target directory
+target/*
+
+# Allow .jar files if needed (optional)
+!target/*.jar
+
+# Ignore test reports and logs
+target/surefire-reports/
+target/failsafe-reports/
+target/*.log
+
+# Ignore temporary files
+target/tmp/
+target/*.tmp
