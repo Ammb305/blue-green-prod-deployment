@@ -19,12 +19,12 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value-from:
+          valueFrom:  # Corrected field name
             secretKeyRef:
               name: secrets
               key: MYSQL_ROOT_PASSWORD
         - name: MYSQL_DATABASE
-          value-from:
+          valueFrom:  # Corrected field name
             secretKeyRef:
               name: secrets
               key: MYSQL_DATABASE
@@ -39,7 +39,6 @@ spec:
             memory: "2Gi"
             cpu: "1000m"
 ---
-
 # MySQL Service
 apiVersion: v1
 kind: Service
