@@ -21,12 +21,12 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value-From:
+          valueFrom:
             secretKeyRef:
               name: secrets
               key: SPRING_DATASOURCE_URL
         - name: SPRING_DATASOURCE_USERNAME
-          value-From:
+          valueFrom:
             secretKeyRef:
               name: secrets
               key: SPRING_DATASOURCE_USERNAME
