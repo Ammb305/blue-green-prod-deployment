@@ -22,11 +22,11 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value-from: secrets
+          valueFrom: secrets
         - name: SPRING_DATASOURCE_USERNAME
-          value-from: secrets
+          valueFrom: secrets
         - name: SPRING_DATASOURCE_PASSWORD
-          value-from: secrets
+          valueFrom: secrets
         resources:
           requests:
             memory: "500Mi"
