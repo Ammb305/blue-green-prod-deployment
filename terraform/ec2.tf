@@ -69,13 +69,22 @@ resource "aws_security_group" "sonarqube_sg" {
     description = "SSH access from my IP"
   }
 
-  # SonarQube web interface
+  # SonarQube web interface for your IP
   ingress {
     from_port   = 9000
     to_port     = 9000
     protocol    = "tcp"
     cidr_blocks = [var.my_ip]
-    description = "SonarQube web UI access"
+    description = "SonarQube web UI access from my IP"
+  }
+
+  # SonarQube access from Jenkins server
+  ingress {
+    from_port       = 9000
+    to_port         = 9000
+    protocol        = "tcp"
+    security_groups = [aws_security_group.jenkins_sg.id]
+    description     = "Allow Jenkins server to connect to SonarQube"
   }
 
   # Allow all outbound traffic
@@ -103,6 +112,14 @@ resource "aws_security_group" "nexus_sg" {
     protocol    = "tcp"
     cidr_blocks = [var.my_ip]
     description = "SSH access from my IP"
+  }
+
+  ingress {
+    from_port   = 8081
+    to_port     = 8081
+    protocol    = "tcp"
+    security_groups = [aws_security_group.jenkins_sg.id]
+    description = "Allow Jenkins server to connect to Nexus"
   }
 
   # Nexus web interface

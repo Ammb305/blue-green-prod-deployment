@@ -83,11 +83,11 @@
 		<distributionManagement>
         <repository>
             <id>maven-releases</id>
-            <url>${env.NEXUS_REPO_URL}</url>
+            <url>http://10.0.1.120:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>maven-snapshots</id>
-            <url>${env.NEXUS_REPO_URL_SNAPSHOTS}</url>
+            <url>http://10.0.1.120:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
