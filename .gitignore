@@ -42,4 +42,7 @@ target/*.log
 
 # Ignore temporary files
 target/tmp/
-target/*.tmp
+target/*.tm
+
+# Ignore Kubernetes Secrets
+k8s/deployments/secrets.ymlp
